@@ -11,8 +11,16 @@ function generate() {
     var color = r.toString().concat(", ", g, ", ", b);
     var contrastResult = contrast(r, g, b);
     var finalColor = (contrastResult < 123) ? "white" : "black";
-    $(".row").append("<div class='col-md-2' style='background-color: rgb(" + color + ");color: " + finalColor + "'><p class='color-text'>" + color + "</p></div>");
+    $(".row").append("<div class='col-md-2' style='background-color: rgb(" + color + ");color: " + finalColor + "' onclick='copy(" + color + ")'><p class='color-text'>" + color + "</p></div>");
   }
+}
+
+function copy(r, g, b) {
+  var $tempTextField = $("<input>");
+  $("body").append($tempTextField);
+  $tempTextField.val("rgb(" + r + ", " + g + ", " + b + ")").select(); // string that ends up on clipboard
+  document.execCommand("copy");
+  $tempTextField.remove();
 }
 
 function switchTheme() {
