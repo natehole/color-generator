@@ -28,10 +28,10 @@ body {
   align-items: center;
 }
 
-.color__column, .color__column--labels {
+.color-column, .color-column-labels {
   font-size: 1.25rem;
 }
-.color__rgb, .color__hex {
+.color-rgb, .color-hex {
   padding-bottom: 15px;
 }
 

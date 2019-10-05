@@ -1,9 +1,9 @@
 function generate() {
-  $('.color__column').each(function(index, column){
+  $('.color-column').each(function(index, column){
     let rgb = getRGB();
-    $(column).find('.color__rgb').text(`(${rgb})`);
-    $(column).find('.color__hex').text('#' + getHex(rgb));
-    $(column).find('.color__cmyk').text(`(${getCMYK(rgb)})`);
+    $(column).find('.color-rgb').text(`(${rgb})`);
+    $(column).find('.color-hex').text('#' + getHex(rgb));
+    $(column).find('.color-cmyk').text(`(${getCMYK(rgb)})`);
     $(column).css('background-color', `rgb(${rgb})`);
     if (getContrast(rgb) < 123) { 
       $(column).addClass('text-white'); 
@@ -17,7 +17,7 @@ function switchTheme() {
   $('body').toggleClass('bg-secondary')
   $('.fa-moon').toggleClass('d-none')
   $('.fa-sun').toggleClass('d-none')
-  $('.color__column--labels').toggleClass('text-white')
+  $('.color-column-labels').toggleClass('text-white')
 }
 
 function getRGB(){
