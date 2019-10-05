@@ -6,6 +6,10 @@ body {
   -o-transition: all 0.3s ease-in-out;
 }
 
+.nav-link:focus {
+  outline: none
+}
+
 .container-fluid {
   align-items: center;
   display: flex;
@@ -20,22 +24,35 @@ body {
 }
 
 .col-md-2 {
+  align-items: center;
   color: black;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: center
 }
 
 .color-column, .color-column-labels {
   font-size: 1.25rem;
 }
+
 .color-rgb, .color-hex {
   padding-bottom: 15px;
 }
 
+.alert {
+  bottom: 0;
+  margin: 0 auto 2rem auto;
+  position: fixed;
+  width: 75%
+}
+
 @media (max-width: 768px) {
   .row {
+    width: 100%
+  }
+
+  .alert {
+    margin: auto;
     width: 100%
   }
 }

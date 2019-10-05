@@ -86,17 +86,30 @@ function copy(type, text) {
   $tempTextField.remove();
 }
 
+function showToast() {
+  var alert = "<div class='alert alert-success' role='alert'>Color code copied to clipboard.</div>";
+  $(".container-fluid").append(alert);
+  $(".alert").animate({
+    opacity: 0
+  }, 2000, function() {
+    $(this).remove();
+  });
+}
+
 $(".color-rgb").click(function(e) {
   var text = $(e.target).text();
   copy("rgb", text);
+  showToast();
 });
 
 $(".color-hex").click(function(e) {
   var text = $(e.target).text();
   copy("hex", text);
+  showToast();
 });
 
 $(".color-cmyk").click(function(e) {
   var text = $(e.target).text();
   copy("cmyk", text);
+  showToast();
 });
