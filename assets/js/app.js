@@ -10,9 +10,10 @@ function generate() {
 }
 
 function switchTheme() {
-  $('body').toggleClass('bg-dark')
+  $('body').toggleClass('bg-secondary')
   $('.fa-moon').toggleClass('d-none')
   $('.fa-sun').toggleClass('d-none')
+  $('.color__column--labels').toggleClass('text-white')
 }
 
 function getRGB(){
