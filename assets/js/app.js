@@ -58,7 +58,7 @@ function generate() {
     } else {
       $(column).removeClass("text-white");
     }
-  })
+  });
 }
 
 function switchTheme() {
