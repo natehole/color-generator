@@ -1,5 +1,5 @@
 body {
-  background: black;
+  background: white;
   transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -23,11 +23,16 @@ body {
   align-items: center;
   color: black;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
-.color-text {
-  font-size: 1.5rem
+.color__column, .color__column--labels {
+  font-size: 1.25rem;
+}
+.color__rgb, .color__hex {
+  padding-bottom: 15px;
 }
 
 @media (max-width: 768px) {
