@@ -68,21 +68,6 @@ function switchTheme() {
   $(".color-column-labels").toggleClass("text-white");
 }
 
-$(".color-rgb").click(function(e) {
-  var text = $(e.target).text();
-  copy("rgb", text);
-});
-
-$(".color-hex").click(function(e) {
-  var text = $(e.target).text();
-  copy("hex", text);
-});
-
-$(".color-cmyk").click(function(e) {
-  var text = $(e.target).text();
-  copy("cmyk", text);
-});
-
 function copy(type, text) {
   var $tempTextField = $("<input>");
   $("body").append($tempTextField);
@@ -100,3 +85,18 @@ function copy(type, text) {
   document.execCommand("copy");
   $tempTextField.remove();
 }
+
+$(".color-rgb").click(function(e) {
+  var text = $(e.target).text();
+  copy("rgb", text);
+});
+
+$(".color-hex").click(function(e) {
+  var text = $(e.target).text();
+  copy("hex", text);
+});
+
+$(".color-cmyk").click(function(e) {
+  var text = $(e.target).text();
+  copy("cmyk", text);
+});
