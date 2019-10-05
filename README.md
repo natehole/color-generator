@@ -6,3 +6,4 @@ Hosted at: [Color Generator](https://r0b0-s1av3.github.io/color-generator/)
 
 ## Preview
 ![Preview Image](https://github.com/r0b0-s1av3/color-generator/blob/master/preview.png)
+![Preview Image](https://github.com/r0b0-s1av3/color-generator/blob/master/preview2.png)
