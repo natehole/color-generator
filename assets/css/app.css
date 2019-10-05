@@ -1,5 +1,5 @@
 body {
-  background: black;
+  background: white;
   transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -20,14 +20,18 @@ body {
 }
 
 .col-md-2 {
-  align-items: center;
   color: black;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
-.color-text {
-  font-size: 1.5rem
+.color-column, .color-column-labels {
+  font-size: 1.25rem;
+}
+.color-rgb, .color-hex {
+  padding-bottom: 15px;
 }
 
 @media (max-width: 768px) {
