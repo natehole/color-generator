@@ -1,0 +1,31 @@
+body {
+  background: black;
+  transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+.container-fluid {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100%
+}
+
+.row {
+  height: 75%;
+  width: 75%
+}
+
+.col-md-2 {
+  align-items: center;
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+
+.color-text {
+  font-size: 1.5rem
+}
