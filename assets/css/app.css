@@ -20,7 +20,6 @@ body {
 }
 
 .col-md-2 {
-  align-items: center;
   color: black;
   display: flex;
   flex-direction: column;
