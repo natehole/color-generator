@@ -46,7 +46,7 @@ function getCMYK (rgb) {
  var g = rgb[1];
  var b = rgb[2];
 
- if (r==0 && g==0 && b==0) {
+ if (r===0 && g===0 && b===0) {
   finalK = 1;
   return [0,0,0,1];
  }
