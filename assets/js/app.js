@@ -67,3 +67,36 @@ function switchTheme() {
   $(".fa-sun").toggleClass("d-none");
   $(".color-column-labels").toggleClass("text-white");
 }
+
+$(".color-rgb").click(function(e) {
+  var text = $(e.target).text();
+  copy("rgb", text);
+});
+
+$(".color-hex").click(function(e) {
+  var text = $(e.target).text();
+  copy("hex", text);
+});
+
+$(".color-cmyk").click(function(e) {
+  var text = $(e.target).text();
+  copy("cmyk", text);
+});
+
+function copy(type, text) {
+  var $tempTextField = $("<input>");
+  $("body").append($tempTextField);
+  switch (type) {
+    case "rgb":
+      $tempTextField.val("rgb" + text).select();
+      break;
+    case "hex":
+      $tempTextField.val(text).select();
+      break;
+    case "cmyk":
+      $tempTextField.val("cmyk" + text).select();
+      break;
+  }
+  document.execCommand("copy");
+  $tempTextField.remove();
+}
