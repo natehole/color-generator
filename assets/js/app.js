@@ -5,7 +5,11 @@ function generate() {
     $(column).find('.color__hex').text('#' + getHex(rgb));
     $(column).find('.color__cmyk').text(`(${getCMYK(rgb)})`);
     $(column).css('background-color', `rgb(${rgb})`);
-    if (getContrast(rgb) < 123) { $(column).addClass('text-white'); }
+    if (getContrast(rgb) < 123) { 
+      $(column).addClass('text-white'); 
+    } else {
+      $(column).removeClass('text-white');
+    }
   })
 }
 
