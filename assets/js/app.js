@@ -14,10 +14,10 @@ function generate() {
 }
 
 function switchTheme() {
-  $('body').toggleClass('bg-secondary')
-  $('.fa-moon').toggleClass('d-none')
-  $('.fa-sun').toggleClass('d-none')
-  $('.color-column-labels').toggleClass('text-white')
+  $('body').toggleClass('bg-secondary');
+  $('.fa-moon').toggleClass('d-none');
+  $('.fa-sun').toggleClass('d-none');
+  $('.color-column-labels').toggleClass('text-white');
 }
 
 function getRGB(){
@@ -35,7 +35,7 @@ function getHex(rgb) {
          hexPartial = "0" + hexPartial;
     }
     hex = hex + hexPartial;
-  })
+  });
   return hex;
 }
 
