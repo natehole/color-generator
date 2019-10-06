@@ -6,5 +6,8 @@ This app generates 5 random colors using the rgb(), hex, and CMYK() formats. A n
 
 Hosted at: [Color Generator](https://r0b0-s1av3.github.io/color-generator/)
 
+## Contributing
+Welcome, contributors! This project is open for contributions from anyone as long as the contributions add value to the app. If you have an idea, enhancement, or bug you can post an issue on this repository. Please try to be as descriptive as possible when posting issues. If you want to contribute directly to the codebase, submit a pull request and let us know what you've added!
+
 ## Preview
 ![Preview Image](https://github.com/r0b0-s1av3/color-generator/blob/master/preview.png)
