@@ -83,3 +83,19 @@ body {
     width: 100%
   }
 }
+
+.navbar-dark .navbar-nav .nav-link {
+  color: lightgray;
+}
+
+.nav-link {
+  opacity: 0.8;
+}
+
+.nav-link:hover {
+  opacity: 1;
+}
+
+.col-md-2 {
+  cursor: default;
+}
