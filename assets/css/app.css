@@ -35,8 +35,8 @@ body {
   font-size: 1.25rem;
 }
 
-.color-rgb, .color-hex {
-  padding-bottom: 15px;
+.color-rgb, .color-hex, .color-rgb-label, .color-hex-label {
+  padding-bottom: 1.5rem;
 }
 
 .color-rgb:hover, .color-hex:hover, .color-cmyk:hover {
