@@ -1,3 +1,33 @@
+function init() {
+  regenerate();
+
+  $(".color-value").click(function(e) {
+    var text = $(e.target).text();
+    copy($(e.target).data('format'), text);
+    showToast();
+  });
+
+  $(".color-column-lock").click(function(e) {
+    var icon = $(e.target);
+    var column = $(e.target).parent().parent();
+    var status = column.attr('data-locked');
+    if (status == 'true') {
+      column.attr('data-locked', 'false');
+    } else {
+      column.attr('data-locked', 'true');
+    }
+    icon.toggleClass(['fa-lock-open', 'fa-lock']);
+  });
+
+  $(".color-column-regenerate").click(function(e) {
+    generate($(e.target).parent().parent());
+  })
+}
+
+function regenerate() {
+ generate($(".color-column[data-locked='false']")); 
+}
+
 function getRGB() {
   var r = Math.floor(Math.random() * 255);
   var g = Math.floor(Math.random() * 255);
@@ -46,8 +76,8 @@ function getContrast(rgb) {
   return ((299 * rgb[0]) + (587 * rgb[1]) + (114 * rgb[2])) / 1000;
 }
 
-function generate() {
-  $(".color-column").each(function(index, column) {
+function generate(elements) {
+  elements.each(function(index, column) {
     let rgb = getRGB();
     $(column).find(".color-rgb").text(`(${rgb})`);
     $(column).find(".color-hex").text("#" + getHex(rgb));
@@ -95,21 +125,3 @@ function showToast() {
     $(this).remove();
   });
 }
-
-$(".color-rgb").click(function(e) {
-  var text = $(e.target).text();
-  copy("rgb", text);
-  showToast();
-});
-
-$(".color-hex").click(function(e) {
-  var text = $(e.target).text();
-  copy("hex", text);
-  showToast();
-});
-
-$(".color-cmyk").click(function(e) {
-  var text = $(e.target).text();
-  copy("cmyk", text);
-  showToast();
-});

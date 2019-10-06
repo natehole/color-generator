@@ -35,6 +35,25 @@ body {
   font-size: 1.25rem;
 }
 
+.color-column-toolbar {
+  font-size: .8rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: .5rem;
+  background-color: rgba(0,0,0,.5);
+}
+
+.color-column-toolbar a {
+  color: white;
+  text-decoration: none;
+  padding: 0 7px;
+}
+.color-column-toolbar a:hover, .color-column-toolbar a:focus {
+  color: rgba(255,255,255,.7);
+}
+
 .color-rgb, .color-hex, .color-rgb-label, .color-hex-label {
   padding-bottom: 1.5rem;
 }
