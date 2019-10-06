@@ -10,7 +10,7 @@
   <title>Color Generator</title>
 </head>
 
-<body onload="generate()" class="bg-secondary">
+<body onload="init()" class="bg-secondary">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
     <a class="navbar-brand" href="#">Color Generator</a>
@@ -20,7 +20,7 @@
         <a class="nav-link" href="https://github.com/r0b0-s1av3/color-generator"><i class="fab fa-github mx-2"></i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" onclick="generate()"><i class="fas fa-redo text-success mx-2"></i></a>
+        <a class="nav-link" href="#" onclick="regenerate()"><i class="fas fa-redo text-success mx-2"></i></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" onclick="switchTheme()">
@@ -40,7 +40,7 @@
       <div class="color-column col-4 col-md-2" data-locked="false">
         <div class="color-column-toolbar text-center w-100">
           <a href="#" class="color-column-lock fas fa-lock-open" title="Lock Color"></a>
-          <a href="#" class="color-column-refresh fas fa-redo" title="Regenerate Color"></a>
+          <a href="#" class="color-column-regenerate fas fa-redo" title="Regenerate Color"></a>
         </div>
         <div class="color-rgb"></div>
         <div class="color-hex"></div>
@@ -49,7 +49,7 @@
       <div class="color-column col-4 col-md-2" data-locked="false">
         <div class="color-column-toolbar text-center w-100">
           <a href="#" class="color-column-lock fas fa-lock-open" title="Lock Color"></a>
-          <a href="#" class="color-column-refresh fas fa-redo" title="Regenerate Color"></a>
+          <a href="#" class="color-column-regenerate fas fa-redo" title="Regenerate Color"></a>
         </div>
         <div class="color-rgb"></div>
         <div class="color-hex"></div>
@@ -58,7 +58,7 @@
       <div class="color-column col-4 col-md-2" data-locked="false">
         <div class="color-column-toolbar text-center w-100">
           <a href="#" class="color-column-lock fas fa-lock-open" title="Lock Color"></a>
-          <a href="#" class="color-column-refresh fas fa-redo" title="Regenerate Color"></a>
+          <a href="#" class="color-column-regenerate fas fa-redo" title="Regenerate Color"></a>
         </div>
         <div class="color-rgb"></div>
         <div class="color-hex"></div>
@@ -67,7 +67,7 @@
       <div class="color-column col-4 col-md-2" data-locked="false">
         <div class="color-column-toolbar text-center w-100">
           <a href="#" class="color-column-lock fas fa-lock-open" title="Lock Color"></a>
-          <a href="#" class="color-column-refresh fas fa-redo" title="Regenerate Color"></a>
+          <a href="#" class="color-column-regenerate fas fa-redo" title="Regenerate Color"></a>
         </div>
         <div class="color-rgb"></div>
         <div class="color-hex"></div>
@@ -76,7 +76,7 @@
       <div class="color-column col-4 col-md-2" data-locked="false">
         <div class="color-column-toolbar text-center w-100">
           <a href="#" class="color-column-lock fas fa-lock-open" title="Lock Color"></a>
-          <a href="#" class="color-column-refresh fas fa-redo" title="Regenerate Color"></a>
+          <a href="#" class="color-column-regenerate fas fa-redo" title="Regenerate Color"></a>
         </div>
         <div class="color-rgb"></div>
         <div class="color-hex"></div>
