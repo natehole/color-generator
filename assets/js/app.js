@@ -47,7 +47,7 @@ function getContrast(rgb) {
 }
 
 function generate() {
-  $(".color-column").each(function(index, column) {
+  $(".color-column[data-locked='false']").each(function(index, column) {
     let rgb = getRGB();
     $(column).find(".color-rgb").text(`(${rgb})`);
     $(column).find(".color-hex").text("#" + getHex(rgb));
@@ -112,4 +112,16 @@ $(".color-cmyk").click(function(e) {
   var text = $(e.target).text();
   copy("cmyk", text);
   showToast();
+});
+
+$(".color-column-lock").click(function(e) {
+  var icon = $(e.target);
+  var column = $(e.target).parent().parent();
+  var status = column.attr('data-locked')
+  if (status == 'true') {
+    column.attr('data-locked', 'false');
+  } else {
+    column.attr('data-locked', 'true');
+  }
+  icon.toggleClass(['fa-lock-open', 'fa-lock']);
 });
