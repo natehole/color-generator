@@ -1,31 +1,74 @@
+function generate(elements) {
+  elements.each(function(index, column) {
+    let rgb = getRGB();
+    $(column).find(".color-rgb").text(`(${rgb})`);
+    $(column).find(".color-hex").text("#" + getHex(rgb));
+    $(column).find(".color-cmyk").text(`(${getCMYK(rgb)})`);
+    $(column).css("background-color", `rgb(${rgb})`);
+    if (getContrast(rgb) < 123) {
+      $(column).addClass("text-white");
+    } else {
+      $(column).removeClass("text-white");
+    }
+  });
+}
+
+function regenerate() {
+  generate($(".color-column[data-locked='false']"));
+}
+
+function copy(type, text) {
+  var $tempTextField = $("<input>");
+  $("body").append($tempTextField);
+  switch (type) {
+    case "rgb":
+      $tempTextField.val("rgb" + text).select();
+      break;
+    case "hex":
+      $tempTextField.val(text).select();
+      break;
+    case "cmyk":
+      $tempTextField.val("cmyk" + text).select();
+      break;
+  }
+  document.execCommand("copy");
+  $tempTextField.remove();
+}
+
+function showToast() {
+  var alert = "<div class='alert alert-success' role='alert'>Color code copied to clipboard.</div>";
+  $(".container-fluid").append(alert);
+  $(".alert").animate({
+    opacity: 0
+  }, 2000, function() {
+    $(this).remove();
+  });
+}
+
 function init() {
   regenerate();
 
   $(".color-value").click(function(e) {
     var text = $(e.target).text();
-    copy($(e.target).data('format'), text);
+    copy($(e.target).data("format"), text);
     showToast();
   });
 
   $(".color-column-lock").click(function(e) {
     var icon = $(e.target);
     var column = $(e.target).parent().parent();
-    var status = column.attr('data-locked');
+    var status = column.attr("data-locked");
     if (status == 'true') {
-      column.attr('data-locked', 'false');
+      column.attr("data-locked", "false");
     } else {
-      column.attr('data-locked', 'true');
+      column.attr("data-locked", "true");
     }
-    icon.toggleClass(['fa-lock-open', 'fa-lock']);
+    icon.toggleClass(["fa-lock-open", "fa-lock"]);
   });
 
   $(".color-column-regenerate").click(function(e) {
     generate($(e.target).parent().parent());
-  })
-}
-
-function regenerate() {
- generate($(".color-column[data-locked='false']")); 
+  });
 }
 
 function getRGB() {
@@ -76,52 +119,9 @@ function getContrast(rgb) {
   return ((299 * rgb[0]) + (587 * rgb[1]) + (114 * rgb[2])) / 1000;
 }
 
-function generate(elements) {
-  elements.each(function(index, column) {
-    let rgb = getRGB();
-    $(column).find(".color-rgb").text(`(${rgb})`);
-    $(column).find(".color-hex").text("#" + getHex(rgb));
-    $(column).find(".color-cmyk").text(`(${getCMYK(rgb)})`);
-    $(column).css("background-color", `rgb(${rgb})`);
-    if (getContrast(rgb) < 123) {
-      $(column).addClass("text-white");
-    } else {
-      $(column).removeClass("text-white");
-    }
-  });
-}
-
 function switchTheme() {
   $("body").toggleClass("bg-secondary");
   $(".fa-moon").toggleClass("d-none");
   $(".fa-sun").toggleClass("d-none");
   $(".color-column-labels").toggleClass("text-white");
-}
-
-function copy(type, text) {
-  var $tempTextField = $("<input>");
-  $("body").append($tempTextField);
-  switch (type) {
-    case "rgb":
-      $tempTextField.val("rgb" + text).select();
-      break;
-    case "hex":
-      $tempTextField.val(text).select();
-      break;
-    case "cmyk":
-      $tempTextField.val("cmyk" + text).select();
-      break;
-  }
-  document.execCommand("copy");
-  $tempTextField.remove();
-}
-
-function showToast() {
-  var alert = "<div class='alert alert-success' role='alert'>Color code copied to clipboard.</div>";
-  $(".container-fluid").append(alert);
-  $(".alert").animate({
-    opacity: 0
-  }, 2000, function() {
-    $(this).remove();
-  });
 }
