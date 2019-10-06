@@ -1,21 +1,9 @@
 function init() {
   regenerate();
 
-  $(".color-rgb").click(function(e) {
+  $(".color-value").click(function(e) {
     var text = $(e.target).text();
-    copy("rgb", text);
-    showToast();
-  });
-
-  $(".color-hex").click(function(e) {
-    var text = $(e.target).text();
-    copy("hex", text);
-    showToast();
-  });
-
-  $(".color-cmyk").click(function(e) {
-    var text = $(e.target).text();
-    copy("cmyk", text);
+    copy($(e.target).data('format'), text);
     showToast();
   });
 
