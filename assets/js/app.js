@@ -7,7 +7,7 @@ function getRGB() {
 
 function getHex(rgb) {
   var hex = "";
-  rgb.forEach(function(val) {
+  rgb.forEach(function (val) {
     var hexPartial = Number(val).toString(16);
     if (hexPartial.length < 2) {
       hexPartial = "0" + hexPartial;
@@ -46,17 +46,35 @@ function getContrast(rgb) {
   return ((299 * rgb[0]) + (587 * rgb[1]) + (114 * rgb[2])) / 1000;
 }
 
+function alterAccentColors(rgb, column, mapFunc) {
+  var newRGB = rgb.map(mapFunc);
+  $(column).css("color", `rgb(${newRGB})`);
+  $(column).find(".color-column-toolbar").css("background-color", `rgb(${newRGB}, 0.25`);
+}
+
+function addLighterAccents(rgb, column) {
+  alterAccentColors(rgb, column, function (color) {
+    return Math.min(color + 100, 255);
+  });
+}
+
+function addDarkerAccents(rgb, column) {
+  alterAccentColors(rgb, column, function (color) {
+    return Math.max(color - 100, 0);
+  });
+}
+
 function generate(elements) {
-  elements.each(function(index, column) {
+  elements.each(function (index, column) {
     let rgb = getRGB();
     $(column).find(".color-rgb").text(`(${rgb})`);
     $(column).find(".color-hex").text("#" + getHex(rgb));
     $(column).find(".color-cmyk").text(`(${getCMYK(rgb)})`);
     $(column).css("background-color", `rgb(${rgb})`);
     if (getContrast(rgb) < 123) {
-      $(column).addClass("text-white");
+      addLighterAccents(rgb, column);
     } else {
-      $(column).removeClass("text-white");
+      addDarkerAccents(rgb, column);
     }
   });
 }
@@ -88,7 +106,7 @@ function showToast() {
   $(".container-fluid").append(alert);
   $(".alert").animate({
     opacity: 0
-  }, 2000, function() {
+  }, 2000, function () {
     $(this).remove();
   });
 }
@@ -96,13 +114,13 @@ function showToast() {
 function init() {
   regenerate();
 
-  $(".color-value").click(function(e) {
+  $(".color-value").click(function (e) {
     var text = $(e.target).text();
     copy($(e.target).data("format"), text);
     showToast();
   });
 
-  $(".color-column-lock").click(function(e) {
+  $(".color-column-lock").click(function (e) {
     var icon = $(e.target);
     var column = $(e.target).parent().parent();
     var status = column.attr("data-locked");
@@ -114,7 +132,7 @@ function init() {
     icon.toggleClass(["fa-lock-open", "fa-lock"]);
   });
 
-  $(".color-column-regenerate").click(function(e) {
+  $(".color-column-regenerate").click(function (e) {
     generate($(e.target).parent().parent());
   });
 }
