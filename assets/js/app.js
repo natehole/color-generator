@@ -1,3 +1,51 @@
+function getRGB() {
+  var r = Math.floor(Math.random() * 255);
+  var g = Math.floor(Math.random() * 255);
+  var b = Math.floor(Math.random() * 255);
+  return [r, g, b];
+}
+
+function getHex(rgb) {
+  var hex = "";
+  rgb.forEach(function(val) {
+    var hexPartial = Number(val).toString(16);
+    if (hexPartial.length < 2) {
+      hexPartial = "0" + hexPartial;
+    }
+    hex = hex + hexPartial;
+  });
+  return hex;
+}
+
+function getCMYK(rgb) {
+  var finalK = 0;
+
+  var r = rgb[0];
+  var g = rgb[1];
+  var b = rgb[2];
+
+  if (r === 0 && g === 0 && b === 0) {
+    finalK = 1;
+    return [0, 0, 0, 1];
+  }
+
+  var finalC = 1 - (r / 255);
+  var finalM = 1 - (g / 255);
+  var finalY = 1 - (b / 255);
+
+  var minCMY = Math.min(finalC, Math.min(finalM, finalY));
+  finalC = Math.trunc(((finalC - minCMY) / (1 - minCMY)) * 100);
+  finalM = Math.trunc(((finalM - minCMY) / (1 - minCMY)) * 100);
+  finalY = Math.trunc(((finalY - minCMY) / (1 - minCMY)) * 100);
+  finalK = Math.trunc(minCMY * 100);
+
+  return (finalC + "," + finalM + "," + finalY + "," + finalK);
+}
+
+function getContrast(rgb) {
+  return ((299 * rgb[0]) + (587 * rgb[1]) + (114 * rgb[2])) / 1000;
+}
+
 function generate(elements) {
   elements.each(function(index, column) {
     let rgb = getRGB();
@@ -58,7 +106,7 @@ function init() {
     var icon = $(e.target);
     var column = $(e.target).parent().parent();
     var status = column.attr("data-locked");
-    if (status == 'true') {
+    if (status === "true") {
       column.attr("data-locked", "false");
     } else {
       column.attr("data-locked", "true");
@@ -69,54 +117,6 @@ function init() {
   $(".color-column-regenerate").click(function(e) {
     generate($(e.target).parent().parent());
   });
-}
-
-function getRGB() {
-  var r = Math.floor(Math.random() * 255);
-  var g = Math.floor(Math.random() * 255);
-  var b = Math.floor(Math.random() * 255);
-  return [r, g, b];
-}
-
-function getHex(rgb) {
-  var hex = "";
-  rgb.forEach(function(val) {
-    var hexPartial = Number(val).toString(16);
-    if (hexPartial.length < 2) {
-      hexPartial = "0" + hexPartial;
-    }
-    hex = hex + hexPartial;
-  });
-  return hex;
-}
-
-function getCMYK(rgb) {
-  var finalK = 0;
-
-  var r = rgb[0];
-  var g = rgb[1];
-  var b = rgb[2];
-
-  if (r === 0 && g === 0 && b === 0) {
-    finalK = 1;
-    return [0, 0, 0, 1];
-  }
-
-  var finalC = 1 - (r / 255);
-  var finalM = 1 - (g / 255);
-  var finalY = 1 - (b / 255);
-
-  var minCMY = Math.min(finalC, Math.min(finalM, finalY));
-  finalC = Math.trunc(((finalC - minCMY) / (1 - minCMY)) * 100);
-  finalM = Math.trunc(((finalM - minCMY) / (1 - minCMY)) * 100);
-  finalY = Math.trunc(((finalY - minCMY) / (1 - minCMY)) * 100);
-  finalK = Math.trunc(minCMY * 100);
-
-  return (finalC + "," + finalM + "," + finalY + "," + finalK);
-}
-
-function getContrast(rgb) {
-  return ((299 * rgb[0]) + (587 * rgb[1]) + (114 * rgb[2])) / 1000;
 }
 
 function switchTheme() {
