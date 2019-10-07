@@ -48,19 +48,24 @@ function getContrast(rgb) {
 
 function alterAccentColors(rgb, column, mapFunc) {
   var newRGB = rgb.map(mapFunc);
-  $(column).css("color", `rgb(${newRGB})`);
-  $(column).find(".color-column-toolbar").css("background-color", `rgb(${newRGB}, 0.25`);
+  $(column).find(".color-column-toolbar").css("background-color", `rgb(${newRGB})`);
 }
 
 function addLighterAccents(rgb, column) {
+  $(column).addClass("text-white");
+  $(column).find("a.color-column-regenerate").css("color", "RGB(255, 255, 255)");
+  $(column).find("a.color-column-lock").css("color", "RGB(255, 255, 255)");
   alterAccentColors(rgb, column, function (color) {
-    return Math.min(color + 100, 255);
+    return Math.min(color + 30, 255);
   });
 }
 
 function addDarkerAccents(rgb, column) {
+  $(column).removeClass("text-white");
+  $(column).find("a.color-column-lock").css("color", "RGB(0, 0, 0)");
+  $(column).find("a.color-column-regenerate").css("color", "RGB(0, 0, 0)");
   alterAccentColors(rgb, column, function (color) {
-    return Math.max(color - 100, 0);
+    return Math.max(color - 30, 0);
   });
 }
 
